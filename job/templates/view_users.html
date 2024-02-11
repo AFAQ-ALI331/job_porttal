@@ -1,0 +1,59 @@
+{% load static %}
+
+
+{% block body %}
+
+
+{% include 'admin_navigation.html' %}
+
+<marquee style="font-family: 'courier' ;font-size: 25px; color: white;font-weight: bold;margin-top: 1%;background-color:green;">
+    Blue Core Technology "All Users "
+</marquee>
+<hr>
+<style>
+table {
+  border: 1;  
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th, td {
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #34adad;
+}
+</style>
+<div class="container">
+<table id="example"  class="table table-hover  " style=" width:100%">
+    <thead >
+        <tr  style="background-color: skyblue ; ">
+            <th>S.no:</th>
+            <th>Full name</th>
+            <th>Email ID</th>
+            <th>Contact</th>
+            <th>Gender</th>
+            <th>Image</th>
+            <th>Action</th>
+        </tr >
+    </thead>
+    <tbody >
+        {% for i in data %}
+        <tr  class="font-weight-bold mt-md-5" >
+            <td>{{forloop.counter}}</td>
+            <td>{{i.user.first_name}} - {{i.user.last_name}}</td>
+            <td>{{i.user.username}}</td>
+            <td>{{i.mobile}}</td>
+            <td>{{i.gender}}</td>
+            <td><img src = "/media/{{i.image}}" alt=""  style="width:80px;height: 80px; border-radius: 50%;" ></td>
+            <td><a href="{% url 'delete_user' i.user.id%}" class="btn btn-danger btn-sm" onclick="return confirm('are you sure?')">Delete</a></td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+</div>
+{% endblock %}
+
+

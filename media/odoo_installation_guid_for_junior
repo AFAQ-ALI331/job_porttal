@@ -1,0 +1,27 @@
+1. sudo apt-get update
+2. sudo apt-get upgrade
+3. sudo apt-get install -y git python3.8 postgresql nano
+4. sudo apt-get install -y git python3.8 postgresql nano virtualenv xz-utils wget fontconfig libfreetype6 libx11-6 libxext6 libxrender1 node-less node-clean-css xfonts-75dpi
+5. wget -O wkhtmltox.tar.xz http://github.com/wkhtmltopdf/wkhtmltopdf/releases/download/0.12.4/wkhtmltox-0.12.4_linux-generic-amd64.tar.xz
+6. tar xvf wkhtmltox.tar.xz
+7. sudo mv wkhtmltox/lib/* /usr/local/lib/
+8. sudo mv wkhtmltox/bin/* /usr/local/bin/
+9. sudo mv wkhtmltox/share/man/man1 /usr/local/share/man/
+10 sudo apt-get install -y gcc python3.7-dev libxml2-dev libxslt1-dev libevent-dev libsasl2-dev libssl1.0-dev libldap2-dev libpq-dev libpng-dev libjpeg-dev
+11 sudo -u postgres createuser --createdb $(whoami)
+12 createdb $(whoami)
+ **cloning**
+ git clone -b 16.0 https://github.com/odoo/odoo.git
+ ** virtual environment creation**
+ 16 virtualenv -p python3 env_odoo16
+ 17 source env_odoo16/bin/activate
+ 18 cd .. 
+ 19 pip3 install -r src/odoo/requirements.txt
+ 20 src/odoo/odoo-bin -sc env/env_odoo16/config/test.cfg
+
+########################################################################################################################  
+ # baz o kat db authomatically ni othata kam run ni or error dy deta hai like...  to then hm customly database bnatay hain terminal py ya command run 
+ #kr k-->(src/odoo/odoo-bin -sc env/env_odoo16/config/env_odoo16.cfg -i base -d shakoor) as tarha phr server chal jata hai or phr config file main j ak db ka 
+#  name false krna hai as k bad enviroment  set krny k liya odoo16 k andr jo env ka folder bna hai os k andr env_odoo16 ka jo folder hai osy directly pycharm
+#  sath open krna hai os k bad os main configration pori krni hai.. name main env_odoo16 script main odoo-bin or perametc main
+#   -c (config file ka path.)  interpretor wo khod otha ly ga then bs apply-> ok bs  

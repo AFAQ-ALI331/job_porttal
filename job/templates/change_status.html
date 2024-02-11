@@ -1,0 +1,45 @@
+{% load static %}
+
+
+{% block body %}
+
+
+{% include 'admin_navigation.html' %}
+
+<marquee style="font-family: 'courier' ;font-size: 25px; color: white;font-weight: bold;margin-top: 1%;background-color:green;">
+    Blue Core Technology "Recruiters - Pending "
+</marquee>
+<hr>
+<form class="container mt-5" method="post">
+
+    {% csrf_token %}
+    <label><b>Recruiter name</b></label>
+    <input type="text" class="form-control" name="uname" value="{{recruiter.user.first_name}} {{recruiter.user.last_name}}" >
+
+    <label><b>status</b></label>
+    <select  class="form-control" name="status"  >
+        <option name="accept">Accept</option>
+        <option name="reject">Reject</option>
+
+    </select>
+        
+    <input type="submit" value="Submit" class="btn btn-primary " style="margin-top: 2%;color: Green;background-color: black; width: 30;height: 20;font-size: 20px;">
+</form>
+{% include 'footer.html' %}
+
+{% if error == "no" %}
+<script>
+    alert("status changed Successfully");
+    window.location=('{% url "recruiters_all" %}')
+</script>
+
+{% endif  %}
+
+{% if error == "yes" %}
+<script>
+    alert("somrthing went wrong,try again...");
+</script>
+{% endif %}
+{% endblock %}
+
+

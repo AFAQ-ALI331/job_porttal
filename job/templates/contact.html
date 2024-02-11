@@ -1,0 +1,54 @@
+{% load static %}
+
+
+{% block body%}
+
+
+{% include 'navigation.html' %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<style>
+    .mydiv:hover{
+        box-shadow: 0 0 20px 0 rgba(0,0,0.3);
+        transform: translateY(-20px);
+        width: 200px;
+        }
+</style>
+<marquee
+    style="font-family: 'courier' ;font-size: 25px; color: white;font-weight: bold;margin-top: 1%;background-color:blue;">
+    Blue Core Technology "Contacts"
+</marquee>
+<hr>
+<br>
+<br>
+
+<div class="container mt-3 pl-3">
+    <div class="row mt-3">
+        <div class="col-sm-3 mydiv ">
+            <h4 class="text-center ">  <i class="fa fa-phone-square mr-3" ></i>Contact</h4>
+            <h4 class="text-center " style="font-size: larger;" >+92 3318669128</h4>
+
+        </div>
+        <div class="col-sm-3 mydiv">
+            <h4 class="text-center " style="width: 150px;padding: 3%;">  <i class="fa fa-envelope-o mr-3" ></i>Email ID</h4>
+            <h4 class="text-center" style="width: 300px;font-size: large;">afaqalikhan331@gmail.com</h4>
+
+        </div>
+        <div class="col-sm-3 mydiv">
+            <h4 class="text-center ">  <i class="fa fa-home mr-3" ></i>Address</h4>
+            <h4 class="text-center" style="font-size: larger;">village bhoth district and tehsil sialkot</h4>
+
+        </div>
+
+    
+        <div class="col-sm-3 mydiv">
+            <h4 class="text-center ">  <i class="fa fa-clock-o mr-3" aria-hidden="true"></i>Office timing</h4>
+            <h4 class="text-center" style="font-size: larger;">10:00 A.M - 7:00 P.M</h4>
+
+        </div>
+
+</div>
+
+ 
+
+{% endblock %}

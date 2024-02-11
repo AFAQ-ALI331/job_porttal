@@ -1,0 +1,46 @@
+{% load static %}
+
+
+{% block body %}
+
+
+{% include 'admin_navigation.html' %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<style>
+    .mydiv:hover{
+        box-shadow: 0 0 20px 0 rgba(0,0,0.3);
+        transform: translateY(-20px);
+        width: 200px;
+        }
+</style>
+<marquee
+    style="font-family: 'courier' ;font-size: 25px; color: white;font-weight: bold;margin-top: 1%;background-color:blue;">
+    Blue Core Technology "Contacts"
+</marquee>
+<hr>
+<br>
+<br>
+
+<div class="container mt-3 pl-3">
+    <div class="row mt-6">
+        <div class="col-sm-6 mydiv ">
+            <h4 class="text-center "  style="padding: 3%;">  <i class="fa fa-user " ></i>Total Recruiters</h4>
+            <h4 class="text-center font-weight-bold" style="font-size: larger;"> {{rcount}}</h4>
+
+        </div>
+        <div class="col-sm-6 mydiv">
+            <h4 class="text-center " style="padding: 3%;">  <i class="fa fa-user "></i>Total Users</h4>
+            <h4 class="text-center font-weight-bold" style="font-size: large ;">{{scount}}</h4>
+
+        </div>
+  
+
+
+</div>
+
+
+
+{% endblock %}
+
+

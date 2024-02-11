@@ -1,0 +1,66 @@
+{% load static %}
+
+
+{% block body%}
+
+
+{% include 'navigation.html' %}
+
+
+<marquee style="font-family: 'courier' ;font-size: 25px; color: white;font-weight: bold;margin-top: 1%;background-color:green;">
+    Blue Core Technology "Latest Job list  "
+</marquee>
+<hr>
+<style>
+table {
+  color: white;
+  border: 1;  
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th, td {
+  text-align: left;
+  padding: 8px;
+}
+
+tr{
+  
+  text-align: center;
+}
+tr:nth-child(even) {
+  
+  background-color: #bdd4d4;
+}
+</style>
+<div class="container">
+<table border="5" id="example"  class="table table-hover  " style=" width:100%">
+    <thead >
+        <tr  style="background-color: rgb(26, 22, 240) ; " class="text-white">
+            <th>S.no:</th>
+            <th>Company Name</th>
+            <th>Job Title</th>
+            <th>Location</th>
+            <th>Start Date</th>
+            <th>End Date</th>
+            <th>Action</th>
+        </tr >
+    </thead>
+    <tbody >
+        {% for i in data %}
+        <tr  class="font-weight-bold mt-md-5" >
+            <td>{{forloop.counter}}</td>
+            
+            <td>{{i.recruiter.company}} </td>
+            <td>{{i.title}} </td>
+            <td>{{i.location}} </td>
+            <td>{{i.start_date}} </td>
+            <td>{{i.end_date}} </td>
+            <td><a href="{% url 'user_login'  %}" class="btn btn-success btn-sm " style="border-radius: 20%;"   >Login to apply</a></td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+</div>
+
+{% endblock %}

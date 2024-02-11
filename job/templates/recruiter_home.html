@@ -1,0 +1,103 @@
+{% load static %}
+
+
+{% block body%}
+
+
+{% include 'recruiter_navigation.html' %}
+
+
+<marquee
+    style="font-family: 'courier' ;font-size: 25px; color: white;font-weight: bold;margin-top: 1%;background-color:blue;">
+    Blue Core Technology "Profile"
+</marquee>
+<hr>
+<form class="container mt-5"  name="signup" method="post" enctype="multipart/form-data">
+
+    {% csrf_token %}
+
+    <div class=" form-row">
+        <div class="form-group col-md-10">
+                <label>Image</label>
+                <input type="file" class="form-control" name="image" >
+            </div>    
+            <div class="form-group col-md-2">
+                <img src="/media/{{recruiter.image.url}}" width="120" height="120"><a href="{% url 'recruiter_home' %} " > </a>
+
+            </div>
+    </div>
+    <div class="form-row">
+        
+        <div class="form-group col-md-6">
+            <label>Name</label>
+            <input type="text" class="form-control" name="fname" value="{{recruiter.user.first_name}}" >
+
+        </div>
+        <div class="form-group col-md-6">
+            <label >Last Name</label>
+            <input type="text" class="form-control" name="lname" value="{{recruiter.user.last_name}}" >
+
+        </div>
+
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label>Contact Number</label>
+            <input type="text" class="form-control" name="contact" value="{{recruiter.mobile}}" >
+
+        </div>
+        <div class="form-group col-md-6">
+            <label>Company</label>
+            <input type="text" class="form-control" name="company" value="{{recruiter.company}}" >
+
+        </div>
+
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-12">
+            <label>Email ID</label>
+            <input type="text" class="form-control" name="email" readonly value="{{user.username}}" >
+
+        </div>
+    </div>
+    
+        <div class="form-group col-md-6">
+            <label>Gender</label> <span style="color: red;">[{{recruiter.gender}}]</span>
+            <div style="border:1px solid lightgrey ;padding :6px ;border-radius:6px">
+                <div class="custom-control custom-radio custom-control-inline">
+                    <input type="radio" id="customcontrolinline1" name="gender" class="custom-control-input" value="male">
+                    <label class="custom-control-label" for="customcontrolinline1">Male</label>
+                </div>
+                <div class="custom-control custom-radio custom-control-inline">
+                    <input type="radio" id="customcontrolinline2" name="gender" class="custom-control-input" 
+                        value="female">
+                    <label class="custom-control-label" for="customcontrolinline2">Female</label>
+                </div>
+
+            </div>
+        </div>
+        
+    </div>
+
+</div>
+    <input type="submit" value="Update" class="btn btn-secondary mr-3" style="width: 200px;background-color: blue;">
+</form>
+
+{% include 'footer.html' %}
+
+
+{% if error == "no" %}
+<script>
+    alert("profile updated successfully .");
+    window.location=('{% url "recruiter_home" %}')
+</script>
+
+{% endif  %}
+
+{% if error == "yes" %}
+<script>
+    alert("Something went wrong .try again...");
+</script>
+{% endif %}
+
+{% endblock %}

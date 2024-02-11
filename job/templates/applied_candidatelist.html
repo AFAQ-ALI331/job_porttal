@@ -1,0 +1,71 @@
+{% load static %}
+
+
+{% block body%}
+
+
+{% include 'recruiter_navigation.html' %}
+
+
+<marquee style="font-family: 'courier' ;font-size: 25px; color: white;font-weight: bold;margin-top: 1%;background-color:green;">
+    Blue Core Technology "Applied candidate list "
+</marquee>
+<hr>
+<style>
+table {
+  color: white;
+  border: 1;  
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th, td {
+  text-align: left;
+  padding: 8px;
+}
+
+tr{
+  
+  text-align: center;
+}
+tr:nth-child(even) {
+  
+  background-color: #bdd4d4;
+}
+</style>
+<div class="container">
+<table border="5" id="example"  class="table table-hover  " style=" width:100%">
+    <thead >
+        <tr  style="background-color: rgb(26, 22, 240) ; " class="text-white">
+            <th>S.no:</th>
+            <th>Full Name</th>
+            <th>Email ID</th>
+            <th>Coantact no.</th>
+            <th>Job Title</th>
+            <th>Company</th>
+            <th>Apply Date</th>
+            <th>Resume</th>
+        </tr >
+    </thead>
+    <tbody >
+        {% for i in data %}
+        {% if request.user.id == i.job.recruiter.user.id %}
+        <tr  class="font-weight-bold mt-md-5" >
+            <td>{{forloop.counter}}</td>
+            <td>{{i.student.user.first_name}} {{i.student.user.last_name}} </td>
+            <td>{{i.student.user.username}} </td>
+            <td>{{i.student.mobile}} </td>
+            <td>{{i.job.title}} </td>
+            <td>{{i.job.recruiter.company}} </td>
+            <td>{{i.apply_date}} </td>
+
+            <td><a href="/media/{{i.resume.url}}"> Download Resume</a></td>
+
+        </tr>
+        {% endif %}
+        {% endfor %}
+    </tbody>
+</table>
+</div>
+
+{% endblock %}

@@ -1,0 +1,78 @@
+{% load static %}
+
+
+{% block body%}
+
+
+{% include 'user_navigation.html' %}
+
+
+<hr>
+<h1 style="text-align: center;color: black; font-weight: bold;"><u >My Profile</u></h1>
+<form class="container mt-5" onsubmit="return checkpass();" name="signup" method="post" enctype="multipart/form-data">
+
+    {% csrf_token %}
+    <div class="form-row">
+        
+        <div class="form-group col-md-6">
+            <label>Image</label>
+            <input type="file" class="form-control" name="image"  accept="image/*">
+        </div>    
+        <div class="form-group col-md-6">
+            <img src="/media/{{student.image.url}}" width="300" height="300"><a href="{% url 'user_home' %} " > </a>
+
+        </div>
+        <div class="form-group col-md-3">
+            <label>Name</label>
+            <input type="text" class="form-control" name="fname" value="{{student.user.first_name}}"required>
+
+        </div>
+        <div class="form-group col-md-3">
+            <label>Last Name</label>
+            <input type="text" class="form-control" name="lname" value="{{student.user.last_name}}" required>
+
+        </div>
+
+    </div>
+   <div class="form-row">
+
+    <div class="form-group col-md-6">
+        <label>Gender</label>       <span style="color: red;">[{{student.gender}}]</span>
+        <div style="border:1px solid lightgrey ;padding :6px ;border-radius:6px">
+            <div class="custom-control custom-radio custom-control-inline">
+                <input type="radio" id="customcontrolinline1" name="gender"  class="custom-control-input"
+                    value="male">
+                <label class="custom-control-label" for="customcontrolinline1">Male</label>
+            </div>
+            <div class="custom-control custom-radio custom-control-inline">
+                <input type="radio" id="customcontrolinline2" name="gender" class="custom-control-input"
+                    value="female">
+                <label class="custom-control-label" for="customcontrolinline2">Female</label>
+            </div>
+        </div>
+    </div>
+    
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label>Contact Number</label>
+            <input type="text" class="form-control" name="contact" value="{{student.mobile}}" required>
+
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label>Email ID</label>
+            <input type="text" class="form-control" name="email" value="{{student.user.username}}" readonly>
+
+        </div>
+    </div>
+ 
+   </div>
+    <input type="submit" value="Update" class="btn btn-secondary mr-3" style="width: 200px; background-color: blue;">
+</form>
+
+{% endblock %}
+
+
+
